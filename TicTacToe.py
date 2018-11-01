@@ -67,12 +67,12 @@ def get_state_value(state_list,depth=None):
     for i in range(len(state_list)):
         if is_win(state_list[i][0]):
             if(depth%2==1):
-                state_list[i][1] = -5
+                state_list[i][1] = -10
             else:
                 state_list[i][1] = 1        
         else:
             sub_state_list = expand(state_list[i][0],depth=depth)
-            state_list[i][1] = 0.5*get_state_value(sub_state_list,depth=depth+1)
+            state_list[i][1] = get_state_value(sub_state_list,depth=depth+1)
 
         val+=state_list[i][1]
 
